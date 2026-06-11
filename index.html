@@ -1,10 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Cristian Racero</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cristian Racero | Ingeniería Informática</title>
+  <style>
+    /* Estilo general */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0D1117 0%, #000000 100%);
+      color: #E6EDF3;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Menú superior */
+    nav {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: #E6EDF3;
+      text-decoration: none;
+      margin: 0 20px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00C853;
+    }
+
+    /* Contenido central */
+    .hero {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .hero h1 {
+      font-size: 3em;
+      color: #00C853;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+    .hero p {
+      font-size: 1.2em;
+      color: #B0BEC5;
+    }
+
+    /* Animación de fondo */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    /* Efecto de luz dinámica */
+    .light {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(0,200,83,0.15), transparent 70%);
+      animation: pulse 6s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 0.3; transform: scale(1); }
+      to { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8em;
+      color: #B0BEC5;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hola, esta es mi web</h1>
+  <div class="light"></div>
+
+  <nav>
+    <a href="#">INICIO</a>
+    <a href="#">PROYECTOS</a>
+    <a href="#">ARTÍCULOS</a>
+    <a href="#">CONTACTO</a>
+  </nav>
+
+  <div class="hero">
+    <h1>CRISTIAN RACERO</h1>
+    <p>#THISISCRIS · Ingeniería Informática · IA · Algoritmos · Sistemas</p>
+  </div>
+
+  <footer>
+    © 2026 Cristian Racero · Inspirado en MART UMA · Diseño PCB
+  </footer>
 </body>
 </html>
