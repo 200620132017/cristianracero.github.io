@@ -74,3 +74,8 @@
     font-size: 1em;
   }
 }
+.social-card {
+  text-decoration: none;   /* quita subrayado */
+  color: inherit;          /* mantiene color del texto */
+  cursor: pointer;         /* cursor de enlace */
+}
