@@ -1,0 +1,61 @@
+/* === Hero principal === */
+.hero {
+  position: relative;
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 75%;
+  max-width: 900px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 20px #00C853);
+  animation: fadeIn 2s ease-in-out;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+/* === Descripción === */
+.description {
+  margin-top: 0;
+  color: #B0BEC5;
+  font-size: 1.15em;
+  animation: slideUp 2s ease-in-out;
+}
+
+.description p {
+  margin: 5px 0;
+}
+
+/* === Nombre === */
+.name {
+  margin-top: 50px;
+  font-size: 2.8em;
+  color: #00C853;
+  text-shadow: 0 0 20px #00C853;
+  animation: glow 3s infinite alternate;
+}
+
+/* === Responsive index === */
+@media (max-width: 768px) {
+
+  .hero-image {
+    width: 95%;
+    margin-top: 30px;
+  }
+
+  .description {
+    font-size: 1em;
+    padding: 0 20px;
+  }
+
+  .name {
+    font-size: 2.1em;
+    margin-top: 25px;
+  }
+}

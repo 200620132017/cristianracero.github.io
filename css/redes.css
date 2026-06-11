@@ -1,0 +1,76 @@
+/* === Contenedor principal === */
+.socials-container {
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.section-title {
+  font-size: 2em;
+  color: #00C853;
+  text-shadow: 0 0 15px #00C853;
+  margin-bottom: 10px;
+}
+
+/* === Tarjetas === */
+.social-card {
+  background-color: #11161D;
+  border: 1px solid #00C853;
+  padding: 18px 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 340px;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00C853;
+}
+
+.social-card img {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
+}
+
+.social-card a {
+  color: #E6EDF3;
+  text-decoration: none;
+  font-size: 1.1em;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+
+  .socials-container {
+    margin-top: 100px;
+  }
+
+  .section-title {
+    font-size: 1.6em;
+  }
+
+  .social-card {
+    width: 90%;
+    padding: 15px 20px;
+  }
+
+  .social-card img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 6px;
+  }
+
+  .social-card a {
+    font-size: 1em;
+  }
+}

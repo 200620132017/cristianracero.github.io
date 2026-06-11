@@ -1,0 +1,107 @@
+/* === Estilo general === */
+body {
+  margin: 0;
+  background-color: #0D1117;
+  color: #E6EDF3;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* === Foto superior === */
+.top-photo {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.profile-photo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #00C853;
+  box-shadow: 0 0 15px #00C853;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* === Menú superior === */
+nav {
+  position: absolute;
+  top: 170px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+nav a {
+  color: #E6EDF3;
+  text-decoration: none;
+  margin: 0 25px;
+  font-size: 0.9em;
+  letter-spacing: 2px;
+  transition: color 0.3s, border-bottom 0.3s;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  color: #00C853;
+}
+
+nav a.active {
+  border-bottom: 2px solid #00C853;
+  padding-bottom: 3px;
+  color: #00C853;
+}
+
+/* === Footer === */
+footer {
+  position: relative;
+  margin-top: 60px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  color: #B0BEC5;
+  z-index: 1;
+}
+
+/* === Animaciones === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #00C853; }
+  to { text-shadow: 0 0 30px #00FF7F; }
+}
+
+/* === Responsive común === */
+@media (max-width: 768px) {
+
+  .profile-photo {
+    width: 85px;
+    height: 85px;
+  }
+
+  nav {
+    top: 130px;
+  }
+
+  nav a {
+    margin: 0 10px;
+    font-size: 0.75em;
+    letter-spacing: 1px;
+  }
+
+  footer {
+    position: static;
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
+}
