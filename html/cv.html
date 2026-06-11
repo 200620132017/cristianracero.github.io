@@ -3,16 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página en construcción</title>
+  <title>Currículum · Cristian Racero</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/cv.css">
 </head>
 
 <body>
 
-  <h1>Página en construcción</h1>
+  <!-- Foto superior -->
+  <div class="top-photo">
+    <img src="../img/logo.png" alt="Foto de Cristian" class="profile-photo">
+  </div>
 
+  <!-- Menú -->
+  <nav>
+    <a href="../index.html">INICIO</a>
+    <!--<a href="html/proyectos.html">PROYECTOS</a>--> <!--PROYECTOS COMENTADOS MIENTRAS SE CONSTRUYE-->
+    <!--<a href="html/articulos.html">ARTÍCULOS</a>--> <!--ARTICULOS COMENTADOS MIENTRAS SE CONSTRUYE-->
+    <a href="cv.html" class="active">CV</a>
+    <a href="redes.html">REDES SOCIALES</a>
+  </nav>
+
+  <!-- Contenido principal -->
+  <section class="cv-container">
+
+    <h1 class="cv-title">CURRÍCULUM</h1>
+
+    <!-- Botón descargar PDF -->
+    <button id="download-pdf" class="pdf-btn">Descargar CV en PDF</button>
+    (Recomendable descargar desde PC)
+    <!-- Perfil con foto a la izquierda -->
+    <div class="cv-profile">
+      <img src="miFoto.jpg" alt="Foto de Cristian" class="cv-photo">
+      <div class="cv-profile-text">
+        <h2>Perfil profesional</h2>
+        <p>Estudiante de Ingeniería Informática con especial interés en <strong>inteligencia artificial, algoritmos, sistemas y desarrollo de software</strong>. Me caracterizo por aprender rápido, resolver problemas de forma analítica y trabajar con constancia en proyectos técnicos exigentes.</p>
+        <p>Actualmente desarrollo proyectos personales que me permiten aplicar mis conocimientos en programación, diseño de software y herramientas profesionales, siempre buscando mejorar y con ganas de aprender cada día más. Me motiva entender cómo funcionan las cosas por dentro y construir soluciones cada vez más eficientes, limpias y bien estructuradas.</p>
+      </div>
+    </div>
+
+    <!-- Datos personales -->
+    <div class="cv-card">
+      <h2>Datos personales</h2>
+      <p><strong>Nombre:</strong> Cristian Racero Romero</p>
+      <p><strong>Ubicación:</strong> Alcalá del Valle, Cádiz</p>
+      <p><strong>Email:</strong> cristianracerorome@gmail.com</p>
+      <p><strong>Permiso de conducir:</strong> B</p>
+      <p><strong>Inglés:</strong> Nivel B1</p>
+    </div>
+
+    <!-- Experiencia -->
+    <div class="cv-card">
+      <h2>Experiencia</h2>
+
+      <h3><a href="https://github.com/200620132017/sibelius-fingering-cornet.git" style="text-decoration: none; color: inherit;">Plugin para Sibelius – Digitación automática de corneta (do-reb)</a></h3>
+      <p><strong>Desarrollador · Proyecto personal</strong></p>
+      <ul>
+        <li>Creación de un plugin para Sibelius que añade automáticamente la digitación de corneta (do-reb) a las partituras.</li>
+        <li>Implementación de lógica musical y reglas de digitación.</li>
+        <li>Optimización del flujo de trabajo para músicos y compositores.</li>
+        <li>Proyecto desarrollado de forma autónoma desde la idea hasta la implementación final.</li>
+      </ul>
+
+      <h3><a href="https://200620132017.github.io/cristianracero.github.io/index.html" style="text-decoration: none; color: inherit;">Web personal (cristianracero.github.io)</a></h3>
+      <p><strong>Desarrollador web · Proyecto personal</strong></p>
+      <ul>
+        <li>Diseño y desarrollo completo de una web personal con HTML, CSS y estructura modular.</li>
+        <li>Estilo visual propio inspirado en circuitos PCB.</li>
+        <li>Uso de Git y GitHub Pages para despliegue.</li>
+      </ul>
+    </div>
+
+    <!-- Formación -->
+    <div class="cv-card">
+      <h2>Formación</h2>
+      <p><strong>Grado en Ingeniería Informática</strong> — en curso</p>
+      <p>Interés especial en IA, algoritmos, sistemas, backend y desarrollo de software.</p>
+    </div>
+
+    <!-- Habilidades técnicas -->
+    <div class="cv-card">
+      <h2>Habilidades técnicas</h2>
+      <ul>
+        <li>Java · C · C++ · HTML · CSS · SQL</li>
+        <li>Git · GitHub · Visual Studio Code · IntelliJ IDEA · Linux</li>
+      </ul>
+    </div>
+
+    <!-- Habilidades personales -->
+    <div class="cv-card">
+      <h2>Habilidades blandas</h2>
+      <ul>
+        <li>Trabajo en equipo</li>
+        <li>Resolución de problemas</li>
+        <li>Constancia</li>
+        <li>Responsabilidad</li>
+        <li>Comunicación</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Cristian Racero
+  </footer>
+
+  <!-- CV limpio para PDF -->
+  <div id="cv-pdf" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 35px 40px;
+  max-width: 800px;
+  margin: auto;
+  transform: translateY(-200vh);
+  font-family: Arial, sans-serif;
+  color:#000;
+  line-height: 1.45;
+  font-size: 13.5px;
+">
+
+  <!-- Nombre grande -->
+  <h1 style="
+    font-size: 28px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+  ">
+    Cristian Racero Romero
+  </h1>
+
+  <!-- Línea sutil -->
+  <div style="height: 2px; background: #000; width: 100%; margin: 10px 0 25px 0;"></div>
+
+  <!-- Datos personales -->
+  <h2 style="font-size: 18px; margin-bottom: 8px;">Datos personales</h2>
+  <p><strong>Ubicación:</strong> Alcalá del Valle, Cádiz</p>
+  <p><strong>Email:</strong> cristianracerorome@gmail.com</p>
+  <p><strong>Permiso de conducir:</strong> B</p>
+  <p><strong>Inglés:</strong> B1</p>
+
+  <div style="height: 20px;"></div>
+
+  <!-- Perfil profesional -->
+  <h2 style="font-size: 18px; margin-bottom: 8px;">Perfil profesional</h2>
   <p>
-    <a href="../index.html">Volver al inicio</a>
+    Estudiante de Ingeniería Informática con interés en <strong>IA, algoritmos, sistemas y desarrollo de software</strong>.
+    Aprendizaje rápido, pensamiento analítico y constancia en proyectos técnicos.
   </p>
+  <p>
+    Desarrollo proyectos personales aplicando programación, diseño de software y herramientas profesionales,
+    siempre con ganas de aprender y mejorar.
+  </p>
+
+  <div style="height: 20px;"></div>
+
+  <!-- Experiencia -->
+  <h2 style="font-size: 18px; margin-bottom: 8px;">Experiencia</h2>
+
+  <h3 style="font-size: 15px; margin-bottom: 4px;">Plugin para Sibelius – Digitación automática</h3>
+  <ul style="margin-top: 0;">
+    <li>Plugin que añade digitación de corneta automáticamente.</li>
+    <li>Implementación de reglas musicales.</li>
+    <li>Optimización del flujo de trabajo.</li>
+  </ul>
+
+  <h3 style="font-size: 15px; margin-top: 15px; margin-bottom: 4px;">Web personal</h3>
+  <ul style="margin-top: 0;">
+    <li>Diseño y desarrollo completo.</li>
+    <li>Estilo PCB.</li>
+    <li>Despliegue con GitHub Pages.</li>
+  </ul>
+
+  <div style="height: 20px;"></div>
+
+  <!-- Formación -->
+  <h2 style="font-size: 18px; margin-bottom: 8px;">Formación</h2>
+  <p><strong>Grado en Ingeniería Informática</strong> — en curso.</p>
+
+  <div style="height: 20px;"></div>
+
+  <!-- Habilidades técnicas -->
+  <h2 style="font-size: 18px; margin-bottom: 8px;">Habilidades técnicas</h2>
+  <ul style="margin-top: 0;">
+    <li>Java · C · C++ · HTML · CSS · SQL</li>
+    <li>Git · GitHub · VS Code · IntelliJ · Linux</li>
+  </ul>
+
+  <div style="height: 20px;"></div>
+
+  <!-- Habilidades blandas -->
+  <h2 style="font-size: 18px; margin-bottom: 8px;">Habilidades blandas</h2>
+  <ul style="margin-top: 0;">
+    <li>Trabajo en equipo</li>
+    <li>Resolución de problemas</li>
+    <li>Constancia</li>
+    <li>Responsabilidad</li>
+    <li>Comunicación</li>
+  </ul>
+
+</div>
+
+
+  <!-- Librerías necesarias -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Script PDF funcional -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("download-pdf");
+
+    btn.addEventListener("click", async () => {
+      const { jsPDF } = window.jspdf;
+
+      const element = document.getElementById("cv-pdf");
+
+      // Mostrar temporalmente
+      element.style.transform = "translateY(0)";
+
+      await new Promise(r => setTimeout(r, 50));
+
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true
+      });
+
+      const imgData = canvas.toDataURL("image/jpeg", 1.0);
+
+      const pdf = new jsPDF("p", "mm", "a4");
+      const pdfWidth = 210;
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("CV_Cristian_Racero.pdf");
+
+      // Ocultar de nuevo
+      element.style.transform = "translateY(-200vh)";
+    });
+  });
+  </script>
 
 </body>
 </html>
