@@ -3,16 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página en construcción</title>
+  <title>Proyectos · Cristian Racero</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/proyectos.css">
 </head>
 
 <body>
 
-  <h1>Página en construcción</h1>
+  <!-- Foto superior -->
+  <div class="top-photo">
+    <img src="../img/logo.png" alt="Logo Cristian" class="profile-photo">
+  </div>
 
-  <p>
-    <a href="../index.html">Volver al inicio</a>
-  </p>
+  <!-- Menú -->
+  <nav>
+    <a href="../index.html">INICIO</a>
+    <a href="proyectos.html" class="active">PROYECTOS</a>
+    <!--<a href="articulos.html">ARTÍCULOS</a>-->
+    <a href="cv.html">CV</a>
+    <a href="redes.html">REDES SOCIALES</a>
+  </nav>
+
+  <!-- Contenido principal -->
+  <section class="proyectos-container">
+
+    <h1 class="proyectos-title">PROYECTOS</h1>
+
+    <!-- INTRO ARRIBA -->
+    <div class="proyectos-intro">
+      <p>
+        Esta sección recoge algunos de mis proyectos personales relacionados con
+        <strong>programación, música, desarrollo web y herramientas técnicas</strong>.
+        Iré añadiendo más a medida que avance en nuevos desarrollos.
+      </p>
+    </div>
+
+    <!-- GRID DE PROYECTOS (2 POR FILA) -->
+    <div class="proyectos-grid">
+
+      <!-- PROYECTO 1 -->
+      <div class="proyecto-card">
+        <h2>Plugin para Sibelius – Digitación automática</h2>
+        <p><strong>Tipo:</strong> Plugin musical</p>
+        <p><strong>Tecnologías:</strong> Lenguaje de plugins de Sibelius</p>
+
+        <ul>
+          <li>Digitación automática de corneta (do-reb).</li>
+          <li>Reglas musicales implementadas desde cero.</li>
+          <li>Optimiza el flujo de trabajo de músicos.</li>
+        </ul>
+
+        <p>
+          <a href="https://github.com/200620132017/sibelius-fingering-cornet.git" target="_blank">
+            Ver en GitHub
+          </a>
+        </p>
+      </div>
+
+      <!-- PROYECTO 2 -->
+      <div class="proyecto-card">
+        <h2>Web personal (cristianracero.github.io)</h2>
+        <p><strong>Tipo:</strong> Web estática</p>
+        <p><strong>Tecnologías:</strong> HTML · CSS · JavaScript</p>
+
+        <ul>
+          <li>Diseño PCB-tech desde cero.</li>
+          <li>Botón de descarga del CV en PDF.</li>
+          <li>Despliegue con GitHub Pages.</li>
+        </ul>
+
+        <p>
+          <a href="https://200620132017.github.io/cristianracero.github.io/index.html" target="_blank">
+            Visitar web
+          </a>
+        </p>
+      </div>
+
+      <!-- Aquí puedes añadir más proyectos y se colocarán solos en el grid -->
+
+    </div>
+
+    <!-- PRÓXIMOS PROYECTOS ABAJO -->
+    <div class="proyectos-futuro">
+      <h2>Próximos proyectos</h2>
+      <p>
+        Estoy trabajando en nuevos proyectos relacionados con
+        <strong>IA, algoritmos, sistemas y desarrollo de software</strong>.
+        Iré añadiendo más información pronto.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Cristian Racero
+  </footer>
 
 </body>
 </html>

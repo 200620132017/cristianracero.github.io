@@ -1,0 +1,93 @@
+/* ======== CONTENEDOR GENERAL ======== */
+
+.proyectos-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ======== TÍTULO PRINCIPAL ======== */
+
+.proyectos-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* ======== INTRO Y PRÓXIMOS ======== */
+
+.proyectos-intro,
+.proyectos-futuro {
+  background: var(--card-bg, #111);
+  border: 2px solid var(--pcb-green, #00ff99);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+}
+
+/* ======== GRID DE PROYECTOS ======== */
+
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* ======== TARJETAS DE PROYECTO ======== */
+
+.proyecto-card {
+  background: var(--card-bg, #111);
+  border: 2px solid var(--pcb-green, #00ff99);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.proyecto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.35);
+}
+
+/* ======== TÍTULO DE CADA PROYECTO ======== */
+
+.proyecto-card h2 {
+  margin-top: 0;
+  color: var(--pcb-green, #00ff99);
+  font-size: 1.4rem;
+}
+
+/* ======== LISTA DE DETALLES ======== */
+
+.proyecto-card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.proyecto-card li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* ======== ENLACES ======== */
+
+.proyecto-card a {
+  color: var(--pcb-green, #00ff99);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.proyecto-card a:hover {
+  text-decoration: underline;
+}
+
+/* ======== RESPONSIVE ======== */
+
+@media (max-width: 700px) {
+  .proyectos-grid {
+    grid-template-columns: 1fr;
+  }
+}
