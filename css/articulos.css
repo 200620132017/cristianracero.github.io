@@ -1,0 +1,88 @@
+/* ======== CONTENEDOR GENERAL ======== */
+
+.articulos-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ======== TÍTULO PRINCIPAL ======== */
+
+.articulos-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* ======== INTRO Y PRÓXIMOS ======== */
+
+.articulos-intro,
+.articulos-futuro {
+  background: var(--card-bg, #111);
+  border: 2px solid var(--pcb-green, #00ff99);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+}
+
+/* ======== GRID DE ARTÍCULOS ======== */
+
+.articulos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* ======== TARJETAS DE ARTÍCULO ======== */
+
+.articulo-card {
+  background: var(--card-bg, #111);
+  border: 2px solid var(--pcb-green, #00ff99);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.articulo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.35);
+}
+
+/* ======== TÍTULO DE CADA ARTÍCULO ======== */
+
+.articulo-card h2 {
+  margin-top: 0;
+  color: var(--pcb-green, #00ff99);
+  font-size: 1.4rem;
+}
+
+/* ======== TEXTO ======== */
+
+.articulo-card p {
+  line-height: 1.45;
+  margin-top: 10px;
+}
+
+/* ======== RESPONSIVE ======== */
+
+@media (max-width: 700px) {
+  .articulos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.articulo-card a {
+  display: block;        /* Para poder centrarlo */
+  text-align: center;    /* Centrado */
+  margin-top: 15px;
+  font-weight: bold;
+  color: var(--pcb-green, #00ff99); /* Verde PCB */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.articulo-card a:hover {
+  text-decoration: underline; /* Subrayado solo al pasar el ratón */
+}
