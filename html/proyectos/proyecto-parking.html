@@ -29,8 +29,6 @@
 
     <h1 class="proyecto-title">Sistema de Control de Parking</h1>
 
-
-
     <p class="proyecto-subtitle">
       Primer proyecto de electrónica y sistemas embebidos · Arduino · Sensor ultrasónico · Servo
     </p>
@@ -44,22 +42,97 @@
       </video>
     </div>
 
-    <!-- DESCRIPCIÓN -->
+    <!-- DOCUMENTACIÓN TÉCNICA -->
     <div class="proyecto-descripcion">
       <h2>Descripción del proyecto</h2>
+
+      <h3>1. Introducción</h3>
       <p>
-        Este es mi primer proyecto de electrónica y sistemas embebidos. He desarrollado un prototipo funcional de 
-        <strong>sistema de control de acceso para parking</strong>, basado en un sensor ultrasónico para detectar vehículos 
-        y un actuador servo que funciona como barrera automática.
+        Este proyecto implementa un sistema embebido de control de acceso para un aparcamiento mediante un microcontrolador Arduino. 
+        El sistema detecta la presencia de un vehículo utilizando un sensor ultrasónico HC‑SR04 y acciona una barrera automática 
+        mediante un servo SG90. Además, incorpora señalización luminosa mediante LEDs para indicar el estado del sistema.
+      </p>
+      <p>
+        El objetivo principal es desarrollar un prototipo funcional que integre sensado, lógica de control y actuación, aplicando 
+        principios básicos de electrónica digital y sistemas embebidos.
       </p>
 
-      <p>
-        El sistema detecta si un coche se aproxima a menos de 5 cm. Si es así, enciende el LED verde, abre la barrera 
-        durante unos segundos y vuelve a cerrarla. Si no hay coche, el LED rojo permanece encendido y la barrera se mantiene cerrada.
-      </p>
+      <h3>2. Arquitectura del sistema</h3>
+      <p>El sistema se compone de cuatro módulos principales:</p>
 
+      <h4>2.1. Módulo de sensado (HC‑SR04)</h4>
+      <ul>
+        <li>Rango efectivo: 2–400 cm</li>
+        <li>Frecuencia: 40 kHz</li>
+        <li>Señales: TRIG (salida), ECHO (entrada)</li>
+      </ul>
+
+      <h4>2.2. Módulo de control (Arduino UNO)</h4>
+      <ul>
+        <li>Lectura del sensor</li>
+        <li>Validación de umbrales</li>
+        <li>Gestión de estados</li>
+        <li>Control del actuador</li>
+        <li>Temporización y anti‑rebote</li>
+      </ul>
+
+      <h4>2.3. Módulo de actuación (Servo SG90)</h4>
+      <ul>
+        <li>Ángulo cerrado: 0°</li>
+        <li>Ángulo abierto: 90°</li>
+        <li>Control mediante señal PWM</li>
+      </ul>
+
+      <h4>2.4. Módulo de señalización (LEDs)</h4>
+      <ul>
+        <li>LED verde → acceso permitido</li>
+        <li>LED rojo → acceso denegado / sin vehículo</li>
+      </ul>
+
+      <h3>3. Diagrama de funcionamiento</h3>
+      <ul>
+        <li><strong>IDLE:</strong> sin vehículo, barrera cerrada, LED rojo</li>
+        <li><strong>DETECTION:</strong> distancia &lt; 5 cm</li>
+        <li><strong>OPENING:</strong> servo a 90°, LED verde</li>
+        <li><strong>WAITING:</strong> temporización de 3 s</li>
+        <li><strong>CLOSING:</strong> servo a 0°, anti‑rebote</li>
+      </ul>
+
+      <h3>4. Lógica de control</h3>
       <p>
-        Este proyecto me ha permitido trabajar con sensores, actuadores, señales digitales, temporización y lógica embarcada.
+        El sistema utiliza un umbral fijo de <strong>5 cm</strong> para determinar la presencia de un vehículo. La función 
+        <code>medirDistancia()</code> implementa el protocolo del HC‑SR04:
+      </p>
+      <ul>
+        <li>Pulso TRIG de 10 µs</li>
+        <li>Medición del pulso ECHO</li>
+        <li>Conversión a distancia mediante: distancia = duración × 0.034 / 2</li>
+      </ul>
+
+      <h3>5. Conexiones eléctricas</h3>
+      <ul>
+        <li><strong>HC‑SR04:</strong> VCC→5V, GND→GND, TRIG→D9, ECHO→D10</li>
+        <li><strong>Servo SG90:</strong> VCC→5V, GND→GND, Señal→D5</li>
+        <li><strong>LEDs:</strong> Verde→D6, Rojo→D7 (ambos con 220 Ω)</li>
+      </ul>
+
+      <h3>6. Código fuente</h3>
+      <p>El código completo se encuentra integrado en esta página.</p>
+
+      <h3>7. Mejoras futuras</h3>
+      <ul>
+        <li>Doble sensor (entrada/salida)</li>
+        <li>Contador de plazas</li>
+        <li>Display TM1637</li>
+        <li>Bluetooth / comunicación remota</li>
+        <li>Histéresis para reducir ruido</li>
+        <li>Alimentación independiente para el servo</li>
+      </ul>
+
+      <h3>8. Conclusión</h3>
+      <p>
+        Este proyecto constituye una primera aproximación al diseño de sistemas embebidos reales, integrando sensado, control 
+        y actuación. Es una base sólida para desarrollar sistemas más complejos en el futuro.
       </p>
     </div>
 
@@ -77,81 +150,76 @@
       <h2>Código fuente</h2>
       <p>Aquí está el código completo del sistema:</p>
 
-      <pre><code class="codigo-arduino">
-      #include &lt;Servo.h&gt;
+<pre><code class="codigo-arduino">
+#include &lt;Servo.h&gt;
 
+// Pines del sensor ultrasónico
+const int trigPin = 9;
+const int echoPin = 10;
 
-      // Pines del sensor ultrasónico
-      const int trigPin = 9;
-      const int echoPin = 10;
+// Pines del servo
+const int servoPin = 5;
 
-      // Pines del servo
-      const int servoPin = 5;
+// Pines de LEDs
+const int ledVerde = 6;
+const int ledRojo = 7;
 
-      // Pines de LEDs
-      const int ledVerde = 6;
-      const int ledRojo = 7;
+Servo barrera;
 
-      Servo barrera;
+long medirDistancia() {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
 
-      long medirDistancia() {
-        digitalWrite(trigPin, LOW);
-        delayMicroseconds(2);
-        digitalWrite(trigPin, HIGH);
-        delayMicroseconds(10);
-        digitalWrite(trigPin, LOW);
+  long duracion = pulseIn(echoPin, HIGH);
+  long distancia = duracion * 0.034 / 2;
+  return distancia;
+}
 
-        long duracion = pulseIn(echoPin, HIGH);
-        long distancia = duracion * 0.034 / 2; // en cm
-        return distancia;
-      }
+void setup() {
+  Serial.begin(9600);
 
-      void setup() {
-        Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 
-        pinMode(trigPin, OUTPUT);
-        pinMode(echoPin, INPUT);
+  pinMode(ledVerde, OUTPUT);
+  pinMode(ledRojo, OUTPUT);
 
-        pinMode(ledVerde, OUTPUT);
-        pinMode(ledRojo, OUTPUT);
+  barrera.attach(servoPin);
+  barrera.write(0);
 
-        barrera.attach(servoPin);
-        barrera.write(0); // barrera cerrada
+  digitalWrite(ledRojo, HIGH);
+  digitalWrite(ledVerde, LOW);
+}
 
-        digitalWrite(ledRojo, HIGH); // por defecto cerrado
-        digitalWrite(ledVerde, LOW);
-      }
+void loop() {
+  long distancia = medirDistancia();
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.println(" cm");
 
-      void loop() {
-        long distancia = medirDistancia();
-        Serial.print("Distancia: ");
-        Serial.print(distancia);
-        Serial.println(" cm");
+  if (distancia < 5) {
+    digitalWrite(ledVerde, HIGH);
+    digitalWrite(ledRojo, LOW);
 
-        if (distancia < 5) {  
-          // Coche detectado
-          digitalWrite(ledVerde, HIGH);
-          digitalWrite(ledRojo, LOW);
+    barrera.write(90);
+    delay(3000);
+    barrera.write(0);
+    delay(1000);
+  } 
+  else {
+    digitalWrite(ledRojo, HIGH);
+    digitalWrite(ledVerde, LOW);
+    barrera.write(0);
+  }
 
-          barrera.write(90); // abrir barrera
-          delay(3000);       // esperar 3 segundos
-          barrera.write(0);  // cerrar barrera
-          delay(1000);       // evitar doble detección
-        } 
-        else {
-          // No hay coche
-          digitalWrite(ledRojo, HIGH);
-          digitalWrite(ledVerde, LOW);
+  delay(100);
+}
+</code></pre>
 
-          barrera.write(0); // barrera cerrada
-        }
-
-        delay(100);
-      }
-
-        </code></pre>
-      </div>
-
+    </div>
 
   </section>
 
