@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto · Sistema de Parking</title>
+
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/proyectos/proyecto-individual.css">
+</head>
+
+<body>
+
+  <!-- Foto superior -->
+  <div class="top-photo">
+    <img src="../../img/logo.png" alt="Logo Cristian" class="profile-photo">
+  </div>
+
+  <!-- Menú -->
+  <nav>
+    <a href="../../index.html">INICIO</a>
+    <a href="../proyectos.html" class="active">PROYECTOS</a>
+    <a href="../articulos.html">ARTÍCULOS</a>
+    <a href="../cv.html">CV</a>
+    <a href="../redes.html">REDES SOCIALES</a>
+  </nav>
+
+  <section class="proyecto-container">
+
+    <h1 class="proyecto-title">Sistema de Control de Parking</h1>
+
+
+
+    <p class="proyecto-subtitle">
+      Primer proyecto de electrónica y sistemas embebidos · Arduino · Sensor ultrasónico · Servo
+    </p>
+
+    <!-- VIDEO -->
+    <div class="proyecto-video">
+      <h2>Demostración en vídeo</h2>
+      <video controls>
+        <source src="../../img/proyectos/videoParking.mp4" type="video/mp4">
+        Tu navegador no soporta vídeo HTML5.
+      </video>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <div class="proyecto-descripcion">
+      <h2>Descripción del proyecto</h2>
+      <p>
+        Este es mi primer proyecto de electrónica y sistemas embebidos. He desarrollado un prototipo funcional de 
+        <strong>sistema de control de acceso para parking</strong>, basado en un sensor ultrasónico para detectar vehículos 
+        y un actuador servo que funciona como barrera automática.
+      </p>
+
+      <p>
+        El sistema detecta si un coche se aproxima a menos de 5 cm. Si es así, enciende el LED verde, abre la barrera 
+        durante unos segundos y vuelve a cerrarla. Si no hay coche, el LED rojo permanece encendido y la barrera se mantiene cerrada.
+      </p>
+
+      <p>
+        Este proyecto me ha permitido trabajar con sensores, actuadores, señales digitales, temporización y lógica embarcada.
+      </p>
+    </div>
+
+    <!-- FOTOS -->
+    <div class="proyecto-fotos">
+      <h2>Galería</h2>
+      <div class="fotos-grid">
+        <img src="../../img/proyectos/parking1.jpeg" alt="Montaje del sistema">
+        <img src="../../img/proyectos/parking2.jpeg" alt="Detalle del sensor y barrera">
+      </div>
+    </div>
+
+    <!-- CÓDIGO -->
+    <div class="proyecto-codigo">
+      <h2>Código fuente</h2>
+      <p>Aquí está el código completo del sistema:</p>
+
+      <pre><code class="codigo-arduino">
+      #include &lt;Servo.h&gt;
+
+
+      // Pines del sensor ultrasónico
+      const int trigPin = 9;
+      const int echoPin = 10;
+
+      // Pines del servo
+      const int servoPin = 5;
+
+      // Pines de LEDs
+      const int ledVerde = 6;
+      const int ledRojo = 7;
+
+      Servo barrera;
+
+      long medirDistancia() {
+        digitalWrite(trigPin, LOW);
+        delayMicroseconds(2);
+        digitalWrite(trigPin, HIGH);
+        delayMicroseconds(10);
+        digitalWrite(trigPin, LOW);
+
+        long duracion = pulseIn(echoPin, HIGH);
+        long distancia = duracion * 0.034 / 2; // en cm
+        return distancia;
+      }
+
+      void setup() {
+        Serial.begin(9600);
+
+        pinMode(trigPin, OUTPUT);
+        pinMode(echoPin, INPUT);
+
+        pinMode(ledVerde, OUTPUT);
+        pinMode(ledRojo, OUTPUT);
+
+        barrera.attach(servoPin);
+        barrera.write(0); // barrera cerrada
+
+        digitalWrite(ledRojo, HIGH); // por defecto cerrado
+        digitalWrite(ledVerde, LOW);
+      }
+
+      void loop() {
+        long distancia = medirDistancia();
+        Serial.print("Distancia: ");
+        Serial.print(distancia);
+        Serial.println(" cm");
+
+        if (distancia < 5) {  
+          // Coche detectado
+          digitalWrite(ledVerde, HIGH);
+          digitalWrite(ledRojo, LOW);
+
+          barrera.write(90); // abrir barrera
+          delay(3000);       // esperar 3 segundos
+          barrera.write(0);  // cerrar barrera
+          delay(1000);       // evitar doble detección
+        } 
+        else {
+          // No hay coche
+          digitalWrite(ledRojo, HIGH);
+          digitalWrite(ledVerde, LOW);
+
+          barrera.write(0); // barrera cerrada
+        }
+
+        delay(100);
+      }
+
+        </code></pre>
+      </div>
+
+
+  </section>
+
+  <footer>
+    © 2026 Cristian Racero
+  </footer>
+
+</body>
+</html>

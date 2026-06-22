@@ -1,0 +1,116 @@
+/* CONTENEDOR GENERAL */
+.proyecto-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  color: #e0e0e0;
+}
+
+/* TÍTULO PRINCIPAL */
+.proyecto-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #00ff9d;
+  text-shadow: 0 0 8px #00ff9d;
+}
+
+/* SUBTÍTULO */
+.proyecto-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+
+/* VIDEO */
+.proyecto-video {
+  margin-bottom: 40px;
+}
+
+.proyecto-video h2 {
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.proyecto-video video {
+  width: 100%;
+  border: 2px solid #00e0ff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #00e0ff;
+}
+
+/* DESCRIPCIÓN */
+.proyecto-descripcion {
+  margin-bottom: 40px;
+}
+
+.proyecto-descripcion h2 {
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.proyecto-descripcion p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* GALERÍA */
+.proyecto-fotos {
+  margin-bottom: 40px;
+}
+
+.proyecto-fotos h2 {
+  color: #00e0ff;
+  margin-bottom: 15px;
+}
+
+.fotos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.fotos-grid img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #00ff9d;
+  box-shadow: 0 0 12px #00ff9d;
+}
+
+/* CÓDIGO */
+.proyecto-codigo {
+  margin-bottom: 60px;
+}
+
+.proyecto-codigo h2 {
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.github-button {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #00ff9d;
+  color: #000;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.github-button:hover {
+  background-color: #00e0ff;
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .fotos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proyecto-title {
+    font-size: 2rem;
+  }
+}
