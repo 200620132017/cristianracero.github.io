@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto · Simulación Mundial 2026 con IA</title>
+
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/proyectos/proyecto-individual.css">
+</head>
+
+<body>
+
+  <!-- Foto superior -->
+  <div class="top-photo">
+    <img src="../../img/logo.png" alt="Logo Cristian" class="profile-photo">
+  </div>
+
+  <!-- Menú -->
+  <nav>
+    <a href="../../index.html">INICIO</a>
+    <a href="../proyectos.html" class="active">PROYECTOS</a>
+    <a href="../articulos.html">ARTÍCULOS</a>
+    <a href="../cv.html">CV</a>
+    <a href="../redes.html">REDES SOCIALES</a>
+  </nav>
+
+  <section class="proyecto-container">
+
+    <h1 class="proyecto-title">Simulación Estocástica del Mundial 2026</h1>
+
+    <p class="proyecto-subtitle">
+      Modelos XGBoost · Poisson · Time-Decay · Ranking FIFA · Ingeniería de Datos Deportivos
+    </p>
+
+    <!-- DOCUMENTACIÓN TÉCNICA -->
+    <div class="proyecto-descripcion">
+        <h2>Descripción del proyecto</h2>
+
+        <h3>1. Introducción</h3>
+        <p>
+            Este proyecto implementa un sistema de simulación estadística del Mundial 2026 basado en modelos de regresión
+            XGBoost y un pipeline estocástico que combina forma reciente, jerarquía competitiva y ruido controlado. El objetivo
+            es modelar trayectorias plausibles del torneo bajo un marco matemático reproducible, evitando tanto el determinismo
+            excesivo como la aleatoriedad sin estructura.
+        </p>
+        <p>
+            La arquitectura se divide en dos módulos: el entrenamiento de los modelos predictivos (modelo.py) y la simulación
+            completa del cuadro de eliminatorias (simularMundial.py). Ambos componentes están diseñados para trabajar de forma
+            complementaria, integrando señales estadísticas, restricciones de dominio y mecanismos probabilísticos que permiten
+            capturar la naturaleza caótica del fútbol sin perder coherencia estructural.
+        </p>
+
+        <h3>2. Arquitectura del sistema</h3>
+        <p>El sistema se compone de dos bloques principales:</p>
+
+        <h4>2.1. Entrenamiento del modelo (modelo.py)</h4>
+        <p>
+            El módulo de entrenamiento construye dos modelos XGBoost independientes: uno para goles locales y otro para goles
+            visitantes. Esta separación es fundamental porque el fútbol internacional presenta asimetrías estructurales:
+            ventaja de campo, sesgos arbitrales, diferencias tácticas y patrones de anotación que no son simétricos entre local
+            y visitante.
+        </p>
+
+        <ul>
+            <li><strong>Rolling Means:</strong> Se calculan medias móviles de goles a favor y en contra para cada equipo. Esta técnica
+                suaviza la variabilidad extrema del fútbol y evita que un partido aislado (por ejemplo, una goleada atípica)
+                distorsione la señal estadística.</li>
+
+            <li><strong>Time-Decay:</strong> Cada partido recibe un peso exponencial basado en su antigüedad. El decaimiento temporal
+                permite que el modelo priorice el estado actual de las selecciones sin eliminar completamente la información
+                histórica. Matemáticamente, este mecanismo actúa como una regularización temporal que evita el sobreajuste a
+                rachas recientes.</li>
+
+            <li><strong>Ranking FIFA:</strong> Se incorpora como variable jerárquica. XGBoost, al ser un modelo basado en árboles,
+                tiende a capturar patrones locales del dataset. Sin una señal estructural como el ranking, el modelo podría
+                “emborracharse” con rachas cortas y perder la jerarquía competitiva global. El ranking actúa como un ancla que
+                estabiliza la predicción.</li>
+
+            <li><strong>Sample Weighting:</strong> Los pesos temporales se integran directamente en el entrenamiento. Esto permite que
+                el modelo aprenda con sensibilidad temporal, reforzando el momentum actual sin ignorar el histórico.</li>
+        </ul>
+
+        <h4>2.2. Simulador del torneo (simularMundial.py)</h4>
+        <p>
+            El simulador utiliza los modelos entrenados para generar predicciones de goles esperados y posteriormente aplica un
+            módulo estocástico basado en Poisson para obtener marcadores plausibles. Este enfoque híbrido combina aprendizaje
+            automático con estadística clásica.
+        </p>
+
+        <ul>
+            <li><strong>Predicción base:</strong> Se genera un vector de entrada de 6 dimensiones que combina forma reciente y jerarquía.
+                XGBoost devuelve una estimación de goles esperados (λ) para cada equipo.</li>
+
+            <li><strong>Ruido estocástico calibrado:</strong> Se añade un ruido gaussiano de desviación 0.25. Este ruido rompe el
+                determinismo del modelo, simulando eventos aleatorios como tiros al palo, errores arbitrales o variabilidad
+                táctica. La desviación 0.25 está calibrada para no destruir la jerarquía competitiva.</li>
+
+            <li><strong>Matriz de Poisson:</strong> Con los λ ajustados se calcula la probabilidad de cada marcador posible (0–6 goles).
+                La matriz resultante es una distribución conjunta que modela la naturaleza discreta del fútbol.</li>
+
+            <li><strong>Selección del marcador:</strong> Se elige el resultado con mayor probabilidad dentro de la matriz. Este enfoque
+                evita resultados extremos y mantiene coherencia estadística.</li>
+
+            <li><strong>Penaltis:</strong> Los empates se resuelven mediante un proceso estocástico 50/50. Aunque simple, este modelo
+                reproduce la imprevisibilidad real de las tandas.</li>
+
+            <li><strong>Cascada del torneo:</strong> El sistema simula todas las fases del Mundial: 32 → 16 → 8 → 4 → Final.</li>
+        </ul>
+
+        <h3>3. Ingeniería de variables</h3>
+        <p>
+            La ingeniería de variables es el componente más crítico del proyecto. XGBoost es extremadamente sensible a la calidad
+            de las features, y su rendimiento depende más de la estructura del dataset que de los hiperparámetros.
+        </p>
+
+        <ul>
+            <li><strong>Forma reciente:</strong> Las medias móviles capturan la tendencia actual del equipo sin introducir ruido
+                excesivo. Son más estables que usar los últimos partidos directamente.</li>
+
+            <li><strong>Jerarquía competitiva:</strong> El Ranking FIFA actúa como una variable de orden global. Sin esta señal, el
+                modelo podría sobreajustarse a patrones locales del dataset.</li>
+
+            <li><strong>Decaimiento temporal:</strong> La función exponencial evita que partidos antiguos tengan el mismo peso que
+                partidos recientes. Esto es esencial en fútbol, donde las selecciones cambian drásticamente en ciclos de 2–4 años.</li>
+
+            <li><strong>Vector de entrada:</strong> Las 6 dimensiones combinan señales estadísticas y jerárquicas, proporcionando un
+                espacio de características compacto pero altamente informativo.</li>
+        </ul>
+
+        <h3>4. Modelos XGBoost</h3>
+        <p>
+            XGBoost es un algoritmo basado en boosting de árboles que optimiza una función de pérdida mediante gradiente. Su
+            capacidad para capturar interacciones no lineales lo hace ideal para modelar goles, que dependen de múltiples
+            factores discretos y continuos.
+        </p>
+
+        <p>Hiperparámetros principales:</p>
+        <ul>
+            <li>n_estimators: 150 → suficiente para capturar patrones sin sobreajustar</li>
+            <li>max_depth: 3 → evita árboles demasiado complejos</li>
+            <li>learning_rate: 0.03 → aprendizaje lento y estable</li>
+            <li>sample_weight: decaimiento temporal → sensibilidad temporal integrada</li>
+        </ul>
+
+        <p>
+            La separación entre modelos locales y visitantes permite capturar diferencias estructurales como ventaja de campo,
+            sesgos históricos y patrones de anotación asimétricos.
+        </p>
+
+        <h3>5. Métricas de rendimiento</h3>
+        <p>
+            Las métricas obtenidas reflejan la naturaleza caótica del fútbol. Un MAE inferior a 1 gol es un estándar sólido en
+            analítica deportiva predictiva.
+        </p>
+
+        <ul>
+            <li><strong>MAE Local:</strong> 1.0900 → error medio de ±1 gol</li>
+            <li><strong>RMSE Local:</strong> 1.4313 → penaliza errores grandes</li>
+            <li><strong>R² Local:</strong> 0.1588 → el fútbol tiene baja varianza explicable</li>
+            <li><strong>MAE Visitante:</strong> 0.8979 → ligeramente más preciso</li>
+            <li><strong>RMSE Visitante:</strong> 1.2148 → estabilidad ante outliers</li>
+            <li><strong>R² Visitante:</strong> 0.1281 → consistente con la naturaleza del deporte</li>
+        </ul>
+
+        <p>
+            El bajo R² no implica mal modelo: en deportes de alta varianza, el R² suele ser bajo porque la mayoría de la
+            variabilidad proviene de factores no modelables (lesiones, clima, decisiones arbitrales, azar).
+        </p>
+
+        <h3>6. Resultados del simulador</h3>
+        <ul>
+            <li><strong>Revelación:</strong> Colombia elimina a Argentina y Brasil en penaltis, emergiendo como “matagigantes”.</li>
+            <li><strong>Final:</strong> España vs Colombia.</li>
+            <li><strong>Campeón:</strong> España gana 1–0 en un escenario altamente plausible según el modelo.</li>
+        </ul>
+
+        <h3>7. Conclusión</h3>
+        <p>
+            El proyecto demuestra que la ingeniería de restricciones, el control de sesgos y la integración de señales jerárquicas
+            son tan importantes como el propio algoritmo. La combinación de XGBoost, Poisson y ruido controlado permite generar
+            simulaciones coherentes, reproducibles y estadísticamente fundamentadas.
+        </p>
+        </div>
+
+
+
+    <!-- FOTOS -->
+    <div class="proyecto-fotos">
+      <h2>Galería</h2>
+      <div class="fotos-grid">
+        <img src="../../img/proyectos/Mundial 2026.png" alt="Mapa del torneo">
+        <div class="resultados-simulacion">
+  
+
+      </div>
+    </div>
+
+    <!-- CÓDIGO -->
+    <div class="proyecto-codigo">
+      <h2>Código fuente</h2>
+<a href="https://github.com/200620132017/Simulador-Mundial.git" 
+   style="text-decoration: none; color: inherit;">
+  <p>Pincha aquí para acceder al repositorio en GitHub</p>
+</a>
+
+<pre><code class="codigo-arduino">
+
+</code></pre>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Cristian Racero
+  </footer>
+
+</body>
+</html>
