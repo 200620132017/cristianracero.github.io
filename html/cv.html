@@ -33,13 +33,14 @@
     <!-- Botón descargar PDF -->
     <button id="download-pdf" class="pdf-btn">Descargar CV en PDF</button>
     (Recomendable descargar desde PC)
+
     <!-- Perfil con foto a la izquierda -->
     <div class="cv-profile">
       <img src="miFoto.jpg" alt="Foto de Cristian" class="cv-photo">
       <div class="cv-profile-text">
         <h2>Perfil profesional</h2>
-        <p>Estudiante de Ingeniería Informática con especial interés en <strong>inteligencia artificial, algoritmos, sistemas y desarrollo de software</strong>. Me caracterizo por aprender rápido, resolver problemas de forma analítica y trabajar con constancia en proyectos técnicos exigentes.</p>
-        <p>Actualmente desarrollo proyectos personales que me permiten aplicar mis conocimientos en programación, diseño de software y herramientas profesionales, siempre buscando mejorar y con ganas de aprender cada día más. Me motiva entender cómo funcionan las cosas por dentro y construir soluciones cada vez más eficientes, limpias y bien estructuradas.</p>
+        <p>Estudiante de Ingeniería Informática en la Universidad de Málaga (UMA) con un perfil enfocado en <strong>desarrollo de software, sistemas, algoritmos e inteligencia artificial</strong>. Me caracterizo por mi mentalidad analítica, constancia y una fuerte capacidad de aprendizaje autónomo para abordar proyectos técnicos complejos.</p>
+        <p>Apasionado por comprender la arquitectura interna del software y la integración con el hardware, desarrollo proyectos que abarcan desde aplicaciones nativas para Linux y modelos estocásticos de machine learning hasta sistemas embebidos con microcontroladores, priorizando siempre la eficiencia, la modularidad y el código limpio.</p>
       </div>
     </div>
 
@@ -47,58 +48,86 @@
     <div class="cv-card">
       <h2>Datos personales</h2>
       <p><strong>Nombre:</strong> Cristian Racero Romero</p>
-      <p><strong>Email:</strong> cristianracerorome@gmail.com</p>
+      <p><strong>Ubicación:</strong> Alcalá del Valle, Cádiz (Disponibilidad en Málaga)</p>
+      <p><strong>Email:</strong> <a href="mailto:cristianracerorome@gmail.com" style="color: inherit;">cristianracerorome@gmail.com</a></p>
+      <p><strong>Web & Portafolio:</strong> <a href="https://cristianracero.github.io" target="_blank" style="color: inherit;">cristianracero.github.io</a></p>
       <p><strong>Permiso de conducir:</strong> B</p>
-      <p><strong>Inglés:</strong> Nivel B1</p>
+      <p><strong>Idiomas:</strong> Español (Nativo) · Inglés (B1 - Lectura fluida de documentación técnica y especificaciones)</p>
     </div>
 
-    <!-- Experiencia -->
+    <!-- Experiencia / Proyectos -->
     <div class="cv-card">
-      <h2>Experiencia</h2>
+      <h2>Proyectos destacados de ingeniería</h2>
 
-      <h3><a href="https://github.com/200620132017/sibelius-fingering-cornet.git" style="text-decoration: none; color: inherit;">Plugin para Sibelius – Digitación automática de corneta (do-reb)</a></h3>
-      <p><strong>Desarrollador · Proyecto personal</strong></p>
+      <h3>Linux IPTV Player</h3>
+      <p><strong>Aplicación de Escritorio / Streaming Multimedia · Proyecto personal</strong></p>
       <ul>
-        <li>Creación de un plugin para Sibelius que añade automáticamente la digitación de corneta (do-reb) a las partituras.</li>
-        <li>Implementación de lógica musical y reglas de digitación.</li>
-        <li>Optimización del flujo de trabajo para músicos y compositores.</li>
-        <li>Proyecto desarrollado de forma autónoma desde la idea hasta la implementación final.</li>
+        <li>Desarrollo de un reproductor IPTV nativo para Linux enfocado en estabilidad, baja latencia y uso eficiente de recursos.</li>
+        <li>Integración del motor multimedia <code>libmpv</code> con soporte de decodificación acelerada por hardware (VA-API / NVDEC).</li>
+        <li>Implementación de un sistema de búfer dinámico y reconexión automática tolerante a cortes en streams en directo (HLS/H.264).</li>
+        <li>Construcción de una interfaz gráfica reactiva con <strong>PyQt5</strong>, parser de listas M3U complejas con filtrado instantáneo y generación de lanzador de escritorio <code>.desktop</code>.</li>
       </ul>
 
-      <h3><a href="https://200620132017.github.io/cristianracero.github.io/index.html" style="text-decoration: none; color: inherit;">Web personal (cristianracero.github.io)</a></h3>
-      <p><strong>Desarrollador web · Proyecto personal</strong></p>
+      <h3>Simulador Estocástico del Mundial 2026</h3>
+      <p><strong>Inteligencia Artificial / Machine Learning · Proyecto personal</strong></p>
       <ul>
-        <li>Diseño y desarrollo completo de una web personal con HTML, CSS y estructura modular.</li>
-        <li>Estilo visual propio inspirado en circuitos PCB.</li>
-        <li>Uso de Git y GitHub Pages para despliegue.</li>
+        <li>Diseño de un pipeline predictivo en <strong>Python</strong> para estimación de goles esperados a partir de registros históricos de rendimiento.</li>
+        <li>Entrenamiento de modelos con <strong>XGBoost Regressor</strong> y modelado probabilístico mediante distribuciones de Poisson con <strong>SciPy</strong>.</li>
+        <li>Control de sobreajuste mediante anclaje estructural al Ranking FIFA y simulación en cascada del torneo aplicando ruido gaussiano y resolución estocástica de prórrogas/penaltis.</li>
+      </ul>
+
+      <h3>Sistema de Parking Inteligente</h3>
+      <p><strong>Sistemas Embebidos & Electrónica · Proyecto personal</strong></p>
+      <ul>
+        <li>Desarrollo de un controlador embebido sobre plataforma <strong>Arduino (C/C++)</strong> para gestión de accesos y presencia vehicular.</li>
+        <li>Procesamiento de señales en tiempo real mediante sensores ultrasónicos (HC-SR04) para detección precisa de proximidad.</li>
+        <li>Control determinista de actuadores (servomotores) para apertura y cierre de barrera con señalización de estados mediante matrices/indicadores LED.</li>
+      </ul>
+
+      <h3><a href="https://github.com/200620132017/sibelius-fingering-cornet.git" style="text-decoration: none; color: inherit;">Plugin de Digitación Automática para Sibelius (Do/Re♭)</a></h3>
+      <p><strong>Automatización Algorítmica · Proyecto personal</strong></p>
+      <ul>
+        <li>Diseño e implementación integral de un plugin para el software de notación musical Sibelius que automatiza la anotación de digitaciones.</li>
+        <li>Modelado de reglas y lógica musical compleja transformadas en algoritmos de ejecución eficiente sobre el árbol de datos de partituras.</li>
+        <li>Reducción sustancial del tiempo manual requerido por compositores y arreglistas.</li>
+      </ul>
+
+      <h3><a href="https://200620132017.github.io/cristianracero.github.io/index.html" style="text-decoration: none; color: inherit;">Plataforma Web Personal & Portafolio</a></h3>
+      <p><strong>Desarrollo Web & Despliegue · Proyecto personal</strong></p>
+      <ul>
+        <li>Diseño y desarrollo integral de un sitio web modular con HTML5 y CSS3 desde cero, inspirado visualmente en circuitos electrónicos (PCB).</li>
+        <li>Implementación de generador de CV a PDF desde el navegador y configuración de integración/despliegue continuo con Git y GitHub Pages.</li>
       </ul>
     </div>
 
     <!-- Formación -->
     <div class="cv-card">
-      <h2>Formación</h2>
-      <p><strong>Grado en Ingeniería Informática</strong> — en curso</p>
-      <p>Interés especial en IA, algoritmos, sistemas, backend y desarrollo de software.</p>
+      <h2>Formación académica</h2>
+      <p><strong>Grado en Ingeniería Informática</strong> — Universidad de Málaga (UMA) *(En curso)*</p>
+      <p>Orientación e intereses: Inteligencia Artificial, Algoritmia Avanzada, Sistemas Operativos, Arquitectura de Computadores y Desarrollo de Software.</p>
     </div>
 
     <!-- Habilidades técnicas -->
     <div class="cv-card">
       <h2>Habilidades técnicas</h2>
       <ul>
-        <li>Java · C · C++ · HTML · CSS · SQL</li>
-        <li>Git · GitHub · Visual Studio Code · IntelliJ IDEA · Linux</li>
+        <li><strong>Lenguajes de programación:</strong> Python · C · C++ · Java · SQL · HTML5 · CSS3 · JavaScript</li>
+        <li><strong>Machine Learning & Datos:</strong> XGBoost · SciPy · NumPy · Modelado Estocástico · Pandas</li>
+        <li><strong>Sistemas & Hardware:</strong> Linux (Ubuntu / Arch Linux, Bash, administración) · Arduino (Microcontroladores, sensores y servos)</li>
+        <li><strong>Librerías & Multimedia:</strong> PyQt5 · libmpv / mpv API · Protocolos de Streaming (HLS, M3U)</li>
+        <li><strong>Herramientas y Entornos:</strong> Git · GitHub · Visual Studio Code · IntelliJ IDEA</li>
+        <li><strong>Fundamentos de Ingeniería:</strong> Algoritmos y Estructuras de Datos · Programación Orientada a Objetos · Arquitectura de Computadores · Sistemas Operativos</li>
       </ul>
     </div>
 
-    <!-- Habilidades personales -->
+    <!-- Habilidades blandas -->
     <div class="cv-card">
-      <h2>Habilidades blandas</h2>
+      <h2>Competencias profesionales</h2>
       <ul>
-        <li>Trabajo en equipo</li>
-        <li>Resolución de problemas</li>
-        <li>Constancia</li>
-        <li>Responsabilidad</li>
-        <li>Comunicación</li>
+        <li>Capacidad de aprendizaje y resolución analítica y autónoma</li>
+        <li>Rigor en el diseño de arquitecturas eficientes y tolerancia a fallos</li>
+        <li>Trabajo en equipo y adaptabilidad técnica</li>
+        <li>Constancia, sentido de responsabilidad y perseverancia</li>
       </ul>
     </div>
 
@@ -109,140 +138,230 @@
     © 2026 Cristian Racero
   </footer>
 
-  <!-- CV limpio para PDF -->
+  <!-- =======================================================
+       PLANTILLA DE ALTA FIDELIDAD PARA GENERACIÓN MULTIPÁGINA
+       ======================================================= -->
   <div id="cv-pdf" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: white;
-  padding: 35px 40px;
-  max-width: 800px;
-  margin: auto;
-  transform: translateY(-200vh);
-  font-family: Arial, sans-serif;
-  color:#000;
-  line-height: 1.45;
-  font-size: 13.5px;
-">
-
-  <!-- Nombre grande -->
-  <h1 style="
-    font-size: 28px;
-    margin-bottom: 5px;
-    text-align: left;
-    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 800px;
+    background: #ffffff;
+    padding: 45px 50px;
+    transform: translateY(-300vh);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.5;
+    font-size: 13px;
+    box-sizing: border-box;
   ">
-    Cristian Racero Romero
-  </h1>
 
-  <!-- Línea sutil -->
-  <div style="height: 2px; background: #000; width: 100%; margin: 10px 0 25px 0;"></div>
+    <!-- CABECERA -->
+    <h1 style="font-size: 28px; margin: 0 0 4px 0; color: #0b192c; text-transform: uppercase; letter-spacing: 0.5px;">
+      Cristian Racero Romero
+    </h1>
+    <p style="margin: 0; font-weight: 600; color: #2563eb; font-size: 15px;">
+      Estudiante de Grado en Ingeniería Informática · Universidad de Málaga
+    </p>
 
-  <!-- Datos personales -->
-  <h2 style="font-size: 18px; margin-bottom: 8px;">Datos personales</h2>
-  <p><strong>Ubicación:</strong> Alcalá del Valle, Cádiz</p>
-  <p><strong>Email:</strong> cristianracerorome@gmail.com</p>
-  <p><strong>Permiso de conducir:</strong> B</p>
-  <p><strong>Inglés:</strong> B1</p>
+    <!-- BARRA DE CONTACTO -->
+    <div style="margin-top: 10px; padding: 8px 0; border-top: 2px solid #0b192c; border-bottom: 1px solid #cbd5e1; font-size: 12px; color: #475569; display: flex; flex-wrap: wrap; gap: 15px;">
+      <span><strong>Ubicación:</strong> Alcalá del Valle, Cádiz</span>
+      <span><strong>Email:</strong> cristianracerorome@gmail.com</span>
+      <span><strong>Portafolio:</strong> cristianracero.github.io</span>
+      <span><strong>Permiso:</strong> B</span>
+      <span><strong>Inglés:</strong> B1</span>
+    </div>
 
-  <div style="height: 20px;"></div>
+    <!-- PERFIL -->
+    <div style="margin-top: 20px;">
+      <h2 style="font-size: 15px; margin: 0 0 6px 0; text-transform: uppercase; color: #0b192c; border-bottom: 1.5px solid #2563eb; padding-bottom: 2px; letter-spacing: 0.5px;">
+        Perfil Profesional
+      </h2>
+      <p style="margin: 0; text-align: justify; color: #334155;">
+        Estudiante de Ingeniería Informática con sólida base analítica y especial interés en <strong>desarrollo de software, sistemas, algoritmos e inteligencia artificial</strong>. Orientado a la resolución técnica de problemas y con alta autonomía en el aprendizaje y aplicación de nuevas tecnologías. Capacidad probada en la concepción y desarrollo integral de soluciones que unen software nativo, modelos de machine learning y sistemas embebidos, priorizando rendimiento, código limpio y robustez.
+      </p>
+    </div>
 
-  <!-- Perfil profesional -->
-  <h2 style="font-size: 18px; margin-bottom: 8px;">Perfil profesional</h2>
-  <p>
-    Estudiante de Ingeniería Informática con interés en <strong>IA, algoritmos, sistemas y desarrollo de software</strong>.
-    Aprendizaje rápido, pensamiento analítico y constancia en proyectos técnicos.
-  </p>
-  <p>
-    Desarrollo proyectos personales aplicando programación, diseño de software y herramientas profesionales,
-    siempre con ganas de aprender y mejorar.
-  </p>
+    <!-- EDUCACIÓN -->
+    <div style="margin-top: 22px;">
+      <h2 style="font-size: 15px; margin: 0 0 6px 0; text-transform: uppercase; color: #0b192c; border-bottom: 1.5px solid #2563eb; padding-bottom: 2px; letter-spacing: 0.5px;">
+        Formación Académica
+      </h2>
+      <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <strong>Grado en Ingeniería Informática</strong>
+        <span style="color: #64748b; font-size: 12px;">En curso</span>
+      </div>
+      <p style="margin: 2px 0 0 0; color: #475569;">Universidad de Málaga (UMA) · Escuela Técnica Superior de Ingeniería Informática</p>
+      <p style="margin: 3px 0 0 0; font-size: 12px; color: #64748b;">
+        Áreas de especial enfoque: Algoritmia, Estructura de Computadores, Sistemas Operativos, Machine Learning y Arquitectura de Software.
+      </p>
+    </div>
 
-  <div style="height: 20px;"></div>
+    <!-- HABILIDADES TÉCNICAS -->
+    <div style="margin-top: 22px;">
+      <h2 style="font-size: 15px; margin: 0 0 8px 0; text-transform: uppercase; color: #0b192c; border-bottom: 1.5px solid #2563eb; padding-bottom: 2px; letter-spacing: 0.5px;">
+        Habilidades Técnicas
+      </h2>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12.5px;">
+        <tr>
+          <td style="padding: 3px 0; width: 28%; font-weight: bold; color: #1e293b;">Lenguajes de programación:</td>
+          <td style="padding: 3px 0; color: #334155;">Python, C, C++, Java, SQL, HTML5, CSS3, JavaScript</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 0; font-weight: bold; color: #1e293b;">Machine Learning & Datos:</td>
+          <td style="padding: 3px 0; color: #334155;">XGBoost, SciPy, NumPy, Modelado Estocástico y Probabilístico</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 0; font-weight: bold; color: #1e293b;">Sistemas & Hardware:</td>
+          <td style="padding: 3px 0; color: #334155;">Linux (Administración, entorno POSIX, Bash), Arduino, Sensores / Actuadores</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 0; font-weight: bold; color: #1e293b;">Librerías & Frameworks:</td>
+          <td style="padding: 3px 0; color: #334155;">PyQt5, libmpv (integración C/Python), protocolos multimedia (HLS, M3U)</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 0; font-weight: bold; color: #1e293b;">Herramientas & Flujo:</td>
+          <td style="padding: 3px 0; color: #334155;">Git, GitHub, VS Code, IntelliJ IDEA, Makefiles / Compilación</td>
+        </tr>
+      </table>
+    </div>
 
-  <!-- Experiencia -->
-  <h2 style="font-size: 18px; margin-bottom: 8px;">Experiencia</h2>
+    <!-- PROYECTOS DESTACADOS -->
+    <div style="margin-top: 22px;">
+      <h2 style="font-size: 15px; margin: 0 0 10px 0; text-transform: uppercase; color: #0b192c; border-bottom: 1.5px solid #2563eb; padding-bottom: 2px; letter-spacing: 0.5px;">
+        Proyectos de Ingeniería Destacados
+      </h2>
 
-  <h3 style="font-size: 15px; margin-bottom: 4px;">Plugin para Sibelius – Digitación automática</h3>
-  <ul style="margin-top: 0;">
-    <li>Plugin que añade digitación de corneta automáticamente.</li>
-    <li>Implementación de reglas musicales.</li>
-    <li>Optimización del flujo de trabajo.</li>
-  </ul>
+      <!-- Proyecto: Linux IPTV Player -->
+      <div style="margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h3 style="margin: 0; font-size: 13.5px; color: #0f172a;">Linux IPTV Player — Reproductor Nativo de Alto Rendimiento</h3>
+          <span style="font-size: 11.5px; color: #64748b; font-weight: bold;">Python · PyQt5 · libmpv · VA-API</span>
+        </div>
+        <ul style="margin: 4px 0 0 0; padding-left: 20px; color: #334155; font-size: 12.5px;">
+          <li>Diseño e implementación de un reproductor IPTV de escritorio para entornos Linux, enfocado en bajo consumo de CPU y latencia reducida.</li>
+          <li>Integración del motor <code>libmpv</code> mediante bindings C-Python, configurando decodificación por hardware (VA-API/NVDEC) para cero caídas de frames.</li>
+          <li>Implementación de arquitectura de búfer elástico y reconexión automática tolerante a cortes en streams HLS en directo.</li>
+          <li>Desarrollo de interfaz gráfica en PyQt5 con parser concurrente de listas M3U complejas y buscador en tiempo real.</li>
+        </ul>
+      </div>
 
-  <h3 style="font-size: 15px; margin-top: 15px; margin-bottom: 4px;">Web personal</h3>
-  <ul style="margin-top: 0;">
-    <li>Diseño y desarrollo completo.</li>
-    <li>Estilo PCB.</li>
-    <li>Despliegue con GitHub Pages.</li>
-  </ul>
+      <!-- Proyecto: Simulador Mundial -->
+      <div style="margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h3 style="margin: 0; font-size: 13.5px; color: #0f172a;">Simulador Estocástico del Mundial 2026</h3>
+          <span style="font-size: 11.5px; color: #64748b; font-weight: bold;">Python · XGBoost · SciPy</span>
+        </div>
+        <ul style="margin: 4px 0 0 0; padding-left: 20px; color: #334155; font-size: 12.5px;">
+          <li>Pipeline completo de Machine Learning para modelar y predecir los goles esperados (xG) en torneos internacionales.</li>
+          <li>Uso de regresores XGBoost combinados con distribuciones Poisson para reflejar la variabilidad intrínseca del juego.</li>
+          <li>Técnicas de regularización con anclaje estructural vía Ranking FIFA y motor estocástico en cascada con ruido gaussiano.</li>
+        </ul>
+      </div>
 
-  <div style="height: 20px;"></div>
+      <!-- Proyecto: Parking Embebido -->
+      <div style="margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h3 style="margin: 0; font-size: 13.5px; color: #0f172a;">Sistema de Control de Parking con Microcontrolador</h3>
+          <span style="font-size: 11.5px; color: #64748b; font-weight: bold;">Arduino · C/C++ · Sensores ultrasónicos</span>
+        </div>
+        <ul style="margin: 4px 0 0 0; padding-left: 20px; color: #334155; font-size: 12.5px;">
+          <li>Diseño de un sistema de control físico y lógico para automatización de barreras de acceso vehicular.</li>
+          <li>Programación en C/C++ para lectura continua y filtrado de señales de sensores HC-SR04 y control de micro-servos.</li>
+          <li>Lógica determinista para gestión de estados de presencia, apertura de seguridad y señalización luminosa de advertencia.</li>
+        </ul>
+      </div>
 
-  <!-- Formación -->
-  <h2 style="font-size: 18px; margin-bottom: 8px;">Formación</h2>
-  <p><strong>Grado en Ingeniería Informática</strong> — en curso.</p>
+      <!-- Proyecto: Plugin Sibelius -->
+      <div style="margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h3 style="margin: 0; font-size: 13.5px; color: #0f172a;">Plugin de Digitación Automática para Sibelius</h3>
+          <span style="font-size: 11.5px; color: #64748b; font-weight: bold;">ManuScript · Algoritmia</span>
+        </div>
+        <ul style="margin: 4px 0 0 0; padding-left: 20px; color: #334155; font-size: 12.5px;">
+          <li>Automatización de la digitación de corneta (Do/Re♭) mediante procesamiento algorítmico de partituras complejas.</li>
+          <li>Traducción de reglas de armonía y mecánica instrumental en código de ejecución directa sobre el DOM de partituras.</li>
+        </ul>
+      </div>
 
-  <div style="height: 20px;"></div>
+      <!-- Proyecto: Web Personal -->
+      <div style="margin-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h3 style="margin: 0; font-size: 13.5px; color: #0f172a;">Portafolio Técnico y Generador Web</h3>
+          <span style="font-size: 11.5px; color: #64748b; font-weight: bold;">HTML5 · CSS3 · JavaScript · Git</span>
+        </div>
+        <ul style="margin: 4px 0 0 0; padding-left: 20px; color: #334155; font-size: 12.5px;">
+          <li>Plataforma web modular personalizada inspirada en circuitos electrónicos, alojada mediante Git y GitHub Pages.</li>
+          <li>Pipeline de renderizado en cliente para exportación vectorial de CV con maquetación limpia.</li>
+        </ul>
+      </div>
 
-  <!-- Habilidades técnicas -->
-  <h2 style="font-size: 18px; margin-bottom: 8px;">Habilidades técnicas</h2>
-  <ul style="margin-top: 0;">
-    <li>Java · C · C++ · HTML · CSS · SQL</li>
-    <li>Git · GitHub · VS Code · IntelliJ · Linux</li>
-  </ul>
+    </div>
 
-  <div style="height: 20px;"></div>
+    <!-- COMPETENCIAS PROFESIONALES -->
+    <div style="margin-top: 22px;">
+      <h2 style="font-size: 15px; margin: 0 0 6px 0; text-transform: uppercase; color: #0b192c; border-bottom: 1.5px solid #2563eb; padding-bottom: 2px; letter-spacing: 0.5px;">
+        Competencias Clave
+      </h2>
+      <p style="margin: 0; color: #334155; font-size: 12.5px;">
+        Pensamiento algorítmico y deductivo · Capacidad de prototipado rápido · Depuración y análisis riguroso de errores · Compromiso con el código limpio y la documentación técnica · Colaboración efectiva en equipos multidisciplinares.
+      </p>
+    </div>
 
-  <!-- Habilidades blandas -->
-  <h2 style="font-size: 18px; margin-bottom: 8px;">Habilidades blandas</h2>
-  <ul style="margin-top: 0;">
-    <li>Trabajo en equipo</li>
-    <li>Resolución de problemas</li>
-    <li>Constancia</li>
-    <li>Responsabilidad</li>
-    <li>Comunicación</li>
-  </ul>
+  </div>
 
-</div>
-
-
-  <!-- Librerías necesarias -->
+  <!-- Librerías para exportar a PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- Script PDF funcional -->
+  <!-- Script con Paginación Automática para Múltiples Páginas A4 -->
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("download-pdf");
 
     btn.addEventListener("click", async () => {
       const { jsPDF } = window.jspdf;
-
       const element = document.getElementById("cv-pdf");
 
-      // Mostrar temporalmente
+      // 1. Mostrar temporalmente para renderizado
       element.style.transform = "translateY(0)";
-
       await new Promise(r => setTimeout(r, 50));
 
+      // 2. Renderizar con html2canvas en alta escala
       const canvas = await html2canvas(element, {
         scale: 2,
-        useCORS: true
+        useCORS: true,
+        backgroundColor: "#ffffff"
       });
 
-      const imgData = canvas.toDataURL("image/jpeg", 1.0);
-
+      // 3. Crear PDF A4 vertical (210mm x 297mm)
       const pdf = new jsPDF("p", "mm", "a4");
-      const pdfWidth = 210;
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      const pageWidth = 210;
+      const pageHeight = 297;
 
-      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("CV_Cristian_Racero.pdf");
+      // Calcular la altura proporcional de todo el canvas
+      const imgHeight = (canvas.height * pageWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
 
-      // Ocultar de nuevo
-      element.style.transform = "translateY(-200vh)";
+      const imgData = canvas.toDataURL("image/jpeg", 0.98);
+
+      // 4. Inserción de la primera página
+      pdf.addImage(imgData, "JPEG", 0, position, pageWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      // 5. Inserción automática de páginas subsiguientes si el contenido supera 1 página
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "JPEG", 0, position, pageWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      // 6. Guardar archivo y volver a ocultar el elemento
+      pdf.save("CV_Cristian_Racero_Romero.pdf");
+      element.style.transform = "translateY(-300vh)";
     });
   });
   </script>
